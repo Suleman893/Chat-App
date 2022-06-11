@@ -1,7 +1,14 @@
 import React from "react";
+import Login from "../Components/Login";
+import Signup from "../Components/Signup";
 
 const HomePage = () => {
-  return <div>Homepage</div>;
+  return (
+    <>
+      <Login />
+      <Signup />
+    </>
+  );
 };
 
 export default HomePage;
