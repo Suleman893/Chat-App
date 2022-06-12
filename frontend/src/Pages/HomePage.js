@@ -14,7 +14,6 @@ const HomePage = () => {
   return (
     <>
       <Login />
-      <Signup />
     </>
   );
 };

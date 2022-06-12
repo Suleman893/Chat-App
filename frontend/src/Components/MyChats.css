@@ -1,0 +1,36 @@
+.my-chats {
+  flex-basis: 35%;
+  border-radius: 15px;
+
+  background-color: #fff;
+}
+.my-chats-container {
+  width: 80%;
+  margin: 10px auto;
+}
+.my-chats-container-content {
+  display: flex;
+  justify-content: space-between;
+}
+.my-chats-container-content p {
+  font-size: 26px;
+}
+.my-chats-container-content button {
+  height: 30px;
+  width: 35%;
+}
+
+.chats-boxes {
+  border-radius: 6px;
+  width: 96%;
+  background-color: gainsboro;
+  margin: 10px auto;
+  height: 58px;
+  padding: 3px 3px;
+}
+
+@media screen and (max-width: 800px) {
+  .my-chats {
+    flex-basis: 100%;
+  }
+}

@@ -3,7 +3,7 @@ import SideDrawer from "../Components/SideDrawer";
 import MyChats from "../Components/MyChats";
 import ChatBox from "../Components/ChatBox";
 import Header from "../Components/Header";
-
+import "./ChatPage.css";
 const ChatPage = () => {
   const { user } = ChatState();
   return (

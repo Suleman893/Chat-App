@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ChatState } from "../Context/ChatProvider";
 import UserListItem from "./UserListItem";
+import "./SideDrawer.css";
 const SideDrawer = () => {
-  const { user, setSelectedChat, chat, setChats } = ChatState();
+  const { user, setSelectedChat, chats, setChats } = ChatState();
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const { loading, setLoading } = useState(false);
@@ -30,7 +31,7 @@ const SideDrawer = () => {
 
   const accessChat = async (userId) => {
     try {
-      setLoadingChat(true);
+      // setLoadingChat(true);
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -38,45 +39,44 @@ const SideDrawer = () => {
         },
       };
 
-      const { data } = await axios.post(
-        "/api/chat",
-        {
-          userId,
-        },
-        config
-      );
+      const { data } = await axios.post("/api/chat", { userId }, config);
+      if (!chats.find((c) => c._id === data._id)) {
+        setChats([data, ...chats]);
+      }
 
       setSelectedChat(data);
-      setLoadingChat(false);
-      onclose();
+      // setLoadingChat(false);
+      // onClose();
     } catch (error) {
-      alert("The error while accessing chat ");
+      alert("The error while fetching the chat ");
     }
   };
   return (
     <>
-      <div className="flex-basis-18">
-        <input
-          placeholder="search chat"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button onClick={handleSearch}>Search </button>
-        {loading ? (
-          <h1>Loading</h1>
-        ) : (
-          <>
-            <p>
-              {searchResult?.map((user) => (
-                <UserListItem
-                  key={user._id}
-                  user={user}
-                  handleFunction={() => accessChat(user._id)}
-                />
-              ))}
-            </p>
-          </>
-        )}
+      <div className="side-drawer">
+        <div className="side-drawer-container">
+          <input
+            placeholder="Search User..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button onClick={handleSearch}>Search </button>
+          {loading ? (
+            <h1>Loading</h1>
+          ) : (
+            <>
+              <p>
+                {searchResult?.map((user) => (
+                  <UserListItem
+                    key={user._id}
+                    user={user}
+                    handleFunction={() => accessChat(user._id)}
+                  />
+                ))}
+              </p>
+            </>
+          )}
+        </div>
       </div>
     </>
   );

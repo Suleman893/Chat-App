@@ -2,7 +2,8 @@ import React from "react";
 
 const UserListItem = ({ user, handleFunction }) => {
   return (
-    <div className="userListItem" onClick={handleFunction}>
+    <div className="userListItem">
+      <button onClick={handleFunction}>Access </button>
       <p>{user.name}</p>
       <p>{user.email}</p>
       <hr />

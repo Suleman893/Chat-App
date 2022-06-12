@@ -1,0 +1,20 @@
+.side-drawer {
+  flex-basis: 20%;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.side-drawer-container {
+  width: 80%;
+  margin: 10px auto;
+}
+
+.side-drawer-container input {
+  width: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  .side-drawer-20 {
+    flex-basis: 100%;
+  }
+}
