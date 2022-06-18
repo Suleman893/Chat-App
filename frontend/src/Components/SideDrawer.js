@@ -4,15 +4,17 @@ import { ChatState } from "../Context/ChatProvider";
 import UserListItem from "./UserListItem";
 import "./SideDrawer.css";
 const SideDrawer = () => {
-  const { user, setSelectedChat, chats, setChats } = ChatState();
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const { loading, setLoading } = useState(false);
   const { loadingChat, setLoadingChat } = useState();
 
+  const { user, setSelectedChat, chats, setChats } = ChatState();
+
   const handleSearch = async () => {
     if (!search) {
       alert("Enter something to search");
+      return;
     }
     try {
       // setLoading(true);

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Login from "../Components/Login";
-import Signup from "../Components/Signup";
 import { useHistory } from "react-router-dom";
 
 const HomePage = () => {

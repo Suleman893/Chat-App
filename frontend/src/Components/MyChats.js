@@ -39,10 +39,17 @@ const MyChats = () => {
                 className="chats-boxes"
                 onClick={() => setSelectedChat(chat)}
                 key={chat._id}
+                style={{
+                  backgroundColor: `${selectedChat}===${chat}?
+                "red":"blue"
+                `,
+                }}
               >
-                {!chat.isGroupChat
-                  ? getSender(loggedUser, chat.users)
-                  : chat.chatName}
+                <p>
+                  {!chat.isGroupChat
+                    ? getSender(loggedUser, chat.users)
+                    : chat.chatName}
+                </p>
               </div>
             ))
           ) : (

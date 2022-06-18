@@ -2,14 +2,13 @@ const asyncHandler = require("express-async-handler");
 const Chat = require("../models/chatModel");
 const Message = require("../models/messageModel");
 const User = require("../models/userModel");
+
 const sendMessage = asyncHandler(async (req, res) => {
   const { content, chatId } = req.body;
-
   if (!content || !chatId) {
     console.log("Invalid data passed into the request");
     return res.sendStatus(400);
   }
-
   var newMessage = {
     sender: req.user._id,
     content: content,
@@ -18,7 +17,6 @@ const sendMessage = asyncHandler(async (req, res) => {
 
   try {
     var message = await Message.create(newMessage);
-
     message = await message.populate("sender", "name pic");
     message = await message.populate("chat");
     message = await User.populate(message, {
@@ -42,7 +40,7 @@ const allMessages = asyncHandler(async (req, res) => {
       .populate("sender", "name pic email")
       .populate("chat");
 
-    res.json(message);
+    res.json(messages);
   } catch (error) {
     res.status(400);
     throw new Error(error.message);
