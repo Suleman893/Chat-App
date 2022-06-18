@@ -1,9 +1,14 @@
 import React from "react";
 import "./ChatBox.css";
-const ChatBox = () => {
+import { ChatState } from "../Context/ChatProvider";
+import SingleChat from "./SingleChat";
+const ChatBox = ({ fetchAgain, setFetchAgain }) => {
+  const { selectedChat } = ChatState();
   return (
     <div className="chat-box">
-      <div className="chat-box-container ">ChatBox</div>
+      <div className="chat-box-container ">
+        <SingleChat fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
+      </div>
     </div>
   );
 };

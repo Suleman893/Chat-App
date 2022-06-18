@@ -3,6 +3,7 @@ import axios from "axios";
 import { ChatState } from "../Context/ChatProvider";
 import UserListItem from "./UserListItem";
 import "./SideDrawer.css";
+import { RiUserSearchLine } from "react-icons/ri";
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -62,7 +63,10 @@ const SideDrawer = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button onClick={handleSearch}>Search </button>
+          <RiUserSearchLine
+            onClick={handleSearch}
+            style={{ color: "red", fontSize: "20px" }}
+          />
           {loading ? (
             <h1>Loading</h1>
           ) : (

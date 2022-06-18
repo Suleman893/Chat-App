@@ -8,3 +8,9 @@
   padding-left: 25px;
   padding-right: 25px;
 }
+
+.second ul {
+  display: flex;
+  list-style: none;
+  cursor: pointer;
+}

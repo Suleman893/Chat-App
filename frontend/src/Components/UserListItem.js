@@ -1,12 +1,13 @@
 import React from "react";
-
+import "./UserListItem.css";
 const UserListItem = ({ user, handleFunction }) => {
   return (
-    <div className="userListItem">
-      {/* Instead of button use div onclick*/}
-      <button onClick={handleFunction}>Access </button>
-      <p>{user.name}</p>
-      <p>{user.email}</p>
+    <div className="userListItem" onClick={handleFunction}>
+      <img src={user.pic} />
+      <div className="userListItemContent">
+        <p>{user.name}</p>
+        <p>{user.email}</p>
+      </div>
       <hr />
     </div>
   );

@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema(
     pic: {
       type: String,
       default:
-        "https://www.google.com/search?q=user&sxsrf=ALiCzsY4kAkosVCYGmHqFWShDHgZAHTt6A:1654718461225&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjKptbQ0p74AhWKQvEDHarECY4Q_AUoAXoECAIQAw&biw=768&bih=720&dpr=1.25#imgrc=f3iPe5pB9diemM",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/800px-User_icon_2.svg.png",
     },
   },
   {
@@ -30,10 +30,9 @@ const userSchema = mongoose.Schema(
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
-
 userSchema.pre("save", async function (next) {
   if (!this.isModified) {
-    next(); 
+    next();
   }
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);

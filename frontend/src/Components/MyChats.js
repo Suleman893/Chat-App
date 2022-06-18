@@ -2,10 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ChatState } from "../Context/ChatProvider";
 import { getSender } from "./Chat";
+
 import "./MyChats.css";
-const MyChats = () => {
-  const [loggedUser, setLoggedUser] = useState();
+import GroupModal from "./GroupModal";
+const MyChats = ({ fetchAgain }) => {
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
+  //For modal
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(!show);
+
+  const [loggedUser, setLoggedUser] = useState();
 
   const fetchChats = async () => {
     try {
@@ -25,14 +31,19 @@ const MyChats = () => {
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
     fetchChats();
-  }, []);
+  }, [fetchAgain]);
   return (
     <>
       <div className="my-chats">
         <div className="my-chats-container">
           <div className="my-chats-container-content">
-            <p> My Chats</p> <button>New group chat +</button>
+            <p> My Chats</p>{" "}
+            <button onClick={handleShow}>New group chat +</button>
           </div>
+
+          {show && (
+            <GroupModal handleShow={handleShow} show={show}/>
+          )}
           {chats ? (
             chats.map((chat) => (
               <div

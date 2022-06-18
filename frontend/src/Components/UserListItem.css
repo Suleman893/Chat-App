@@ -1,0 +1,13 @@
+.userListItem {
+  display: flex;
+}
+
+.userListItem img {
+  width: 20%;
+  height: auto;
+}
+.userListItemContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

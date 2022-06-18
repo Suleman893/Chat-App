@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
+const User = require("../models/userModel");
 const Chat = require("../models/chatModel");
 const Message = require("../models/messageModel");
-const User = require("../models/userModel");
 
 const sendMessage = asyncHandler(async (req, res) => {
   const { content, chatId } = req.body;
@@ -46,4 +46,5 @@ const allMessages = asyncHandler(async (req, res) => {
     throw new Error(error.message);
   }
 });
+
 module.exports = { sendMessage, allMessages };
