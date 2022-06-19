@@ -1,12 +1,12 @@
 .signupbox {
-  width: 320px;
+  width: 400px;
   /* height:420px; original*/
   height: auto;
   background-color: #fff;
   color: #000;
   /* top:50%; original*/
   top: 53%;
-
+ border-radius: 20px;
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -84,4 +84,14 @@ input[type="text"] {
   position: absolute;
   top: -50px;
   left: calc(50% - 50px);
+}
+
+@media screen and (max-width: 800px) {
+  .signupbox {
+    width: 320px;
+  }
+
+  .avatar {
+    top: -35px;
+  }
 }

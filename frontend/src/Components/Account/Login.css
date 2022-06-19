@@ -1,6 +1,6 @@
 .loginbox {
-  width: 320px;
-  height: 420px;
+  width: 400px;
+  height: auto;
   background-color: #fff;
   color: #000;
   top: 50%;
@@ -8,6 +8,7 @@
   position: absolute;
   transform: translate(-50%, -50%);
   padding: 70px 30px;
+  border-radius: 20px;
 }
 
 .loginbox h1 {
@@ -81,4 +82,10 @@ input[type="text"] {
   position: absolute;
   top: -50px;
   left: calc(50% - 50px);
+}
+
+@media screen and (max-width: 800px) {
+  .loginbox {
+    width: 320px;
+  }
 }

@@ -1,0 +1,14 @@
+.user-profile {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.user-profile img {
+  width: 30%;
+}
+
+.user-profile-content {
+  display: flex;
+  flex-direction: column;
+}

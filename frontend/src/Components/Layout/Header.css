@@ -11,6 +11,7 @@
 }
 
 .header-logo h2 {
+  cursor: pointer;
   letter-spacing: 5px;
 }
 .header-menu ul {
@@ -20,7 +21,7 @@
 }
 
 .header-menu li {
-  padding-right: 7px;
+  padding-right: 10px;
 }
 
 .icons-font-size {

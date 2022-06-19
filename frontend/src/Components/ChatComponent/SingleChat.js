@@ -6,18 +6,18 @@ import { BiArrowBack } from "react-icons/bi";
 import { CgUserlane } from "react-icons/cg";
 import ProfileModal from "../Modals/ProfileModal";
 import "./SingleChat.css";
+
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
+
   const [show, setShow] = useState(false);
   const handleProfileModal = () => setShow(!show);
   const { user, selectedChat, setSelectedChat } = ChatState();
-
   return (
     <>
       {selectedChat ? (
         <>
-        <div className="abc">
+        <div className="single-chat">
           <BiArrowBack onClick={() => setSelectedChat("")} />
-    
             {!selectedChat.isGroupChat ? (
               <div>
                 {getSender(user, selectedChat.users)}

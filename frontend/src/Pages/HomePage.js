@@ -9,11 +9,8 @@ const HomePage = () => {
 
     if (user) history.push("/chats");
   }, [history]);
-
   return (
-    <>
       <Login />
-    </>
   );
 };
 

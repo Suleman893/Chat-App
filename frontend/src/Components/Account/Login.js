@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
+
 const Login = () => {
   const history = useHistory();
   const [email, setEmail] = useState();
@@ -12,6 +13,7 @@ const Login = () => {
   const handlePasswordShow = () => {
     setShow(!show);
   };
+
   const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
@@ -38,6 +40,7 @@ const Login = () => {
       setLoading(false);
     }
   };
+
   return (
     <>
       <div className="loginbox">
@@ -68,7 +71,7 @@ const Login = () => {
             setPassword("123456");
           }}
         >
-          Gues
+          Guest
         </button>
         <Link to="/signup">Dont have an account? </Link>
       </div>

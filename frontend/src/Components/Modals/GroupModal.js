@@ -4,6 +4,7 @@ import UserListItem from "../UserListItem";
 import UserBadgeItem from "../UserBadgeItem";
 import axios from "axios";
 import { ChatState } from "../../Context/ChatProvider";
+import "./GroupModal.css";
 
 const GroupModal = ({ handleShow, show }) => {
   const { user, chats, setChats } = ChatState();
@@ -89,16 +90,18 @@ const GroupModal = ({ handleShow, show }) => {
             placeholder="Add Users"
             onChange={(e) => handleSearch(e.target.value)}
           >
-            <Form.Label>Add three min users</Form.Label>
+            <Form.Label>Add Users</Form.Label>
             <Form.Control as="textarea" rows={3} />
           </Form.Group>
         </Form>
         {selectedUsers?.map((u) => (
-          <UserBadgeItem
-          key={u._id}
-          user={u}
-            handleFunction={() => handleDelete(u)}
-          />
+          <div className="user-bagde-items">
+            <UserBadgeItem
+              key={u._id}
+              user={u}
+              handleFunction={() => handleDelete(u)}
+            />
+          </div>
         ))}
         {searchResult?.slice(0, 4).map((user) => (
           <UserListItem

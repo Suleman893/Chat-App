@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import account from "../../assets/account.png";
 import "./Signup.css";
+import account from "../../assets/account.png";
 
 const Signup = () => {
   const history = useHistory();
@@ -16,7 +16,7 @@ const Signup = () => {
   const handlePasswordShow = () => {
     setShow(!show);
   };
-  // const postDetails = (pics) => {};
+  // const postDetails = (pics) => {}; //for cloudinary
   const submitHandler = async () => {
     setLoading(true);
     if (!name || !email || !password || !confirmPassword) {
@@ -62,7 +62,6 @@ const Signup = () => {
           }}
         />
         <p>Email</p>
-
         <input
           type="email"
           placeholder="Enter your email"
@@ -71,7 +70,6 @@ const Signup = () => {
           }}
         />
         <p>Password</p>
-
         <input
           placeholder="Enter your password"
           type={show ? "text" : "password"}
@@ -81,7 +79,6 @@ const Signup = () => {
         />
 
         <p>Confirm Password</p>
-
         <input
           type={show ? "text" : "password"}
           placeholder="Enter the confirm password"
@@ -96,7 +93,6 @@ const Signup = () => {
         onChange={(e) => postDetails(e.target.files[0])}
       />
       */}
-
         <button onClick={handlePasswordShow}>{show ? "Hide" : "Show"}</button>
         <button onClick={submitHandler}>Signup</button>
         <Link to="/">Already have an account? </Link>

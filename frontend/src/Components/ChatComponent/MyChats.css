@@ -21,6 +21,29 @@
   border-radius: 20px;
 }
 
+.chat-boxes-container {
+  height: 65vh;
+  overflow-y: scroll;
+  padding-right: 5px;
+}
+
+.chat-boxes-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-boxes-container::-webkit-scrollbar-track {
+  background: darkgray;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.chat-boxes-container::-webkit-scrollbar-thumb {
+  background-color: #63d471;
+  background-image: linear-gradient(315deg, #63d471 0%, #4a765b 74%);
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
 .chats-boxes {
   border-radius: 5px;
   width: 100%;

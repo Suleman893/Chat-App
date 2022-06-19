@@ -4,12 +4,12 @@ import { ChatState } from "../../Context/ChatProvider";
 import UserListItem from "../UserListItem";
 import "./SideDrawer.css";
 import { RiUserSearchLine } from "react-icons/ri";
+
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const { loading, setLoading } = useState(false);
   const { loadingChat, setLoadingChat } = useState();
-
   const { user, setSelectedChat, chats, setChats } = ChatState();
 
   const handleSearch = async () => {
@@ -41,12 +41,10 @@ const SideDrawer = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-
       const { data } = await axios.post("/api/chat", { userId }, config);
       if (!chats.find((c) => c._id === data._id)) {
         setChats([data, ...chats]);
       }
-
       setSelectedChat(data);
       // setLoadingChat(false);
       // onClose();
@@ -54,6 +52,7 @@ const SideDrawer = () => {
       alert("The error while fetching the chat ");
     }
   };
+
   return (
     <>
       <div className="side-drawer">
@@ -72,11 +71,13 @@ const SideDrawer = () => {
             <>
               <p>
                 {searchResult?.map((user) => (
-                  <UserListItem
-                    key={user._id}
-                    user={user}
-                    handleFunction={() => accessChat(user._id)}
-                  />
+                  <div className="div-flexer">
+                    <UserListItem
+                      key={user._id}
+                      user={user}
+                      handleFunction={() => accessChat(user._id)}
+                    />
+                  </div>
                 ))}
               </p>
             </>

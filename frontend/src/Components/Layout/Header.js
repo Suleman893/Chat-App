@@ -5,8 +5,9 @@ import "./Header.css";
 import { TbBellRinging } from "react-icons/tb";
 import { FiLogOut } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
-import { NavDropdown, Nav } from "react-bootstrap";
+// import { NavDropdown, Nav } from "react-bootstrap";
 import ProfileModal from "../Modals/ProfileModal";
+
 const Header = () => {
   const { user } = ChatState();
   const history = useHistory();
@@ -31,21 +32,12 @@ const Header = () => {
             <NavDropdown.Divider />
           </NavDropdown>
           */}
-              <li onClick={handleProfileModal} className="icons-font-size">
-                {user.name}
+              <li className="icons-font-size">{user.name}</li>
+              <li onClick={handleProfileModal}>
+                <FaUser style={{ color: "blue" }} className="icons-font-size" />
                 {show && (
-                  <ProfileModal
-                    user={user}
-                    show={show}
-                    handleProfileModal={handleProfileModal}
-                  />
+                  <ProfileModal user={user} show={show} handleProfileModal />
                 )}
-              </li>
-              <li>
-                <FaUser
-                  style={{ color: "green" }}
-                  className="icons-font-size"
-                />
               </li>
               <li>
                 <TbBellRinging
