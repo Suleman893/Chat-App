@@ -1,7 +1,6 @@
 .my-chats {
-  flex-basis: 35%;
+  width: 35%;
   border-radius: 15px;
-
   background-color: #fff;
 }
 .my-chats-container {
@@ -10,27 +9,30 @@
 }
 .my-chats-container-content {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
+
 .my-chats-container-content p {
-  font-size: 26px;
+  font-size: 25px;
 }
 .my-chats-container-content button {
-  height: 30px;
-  width: 35%;
+  background: none;
+  border-radius: 20px;
 }
 
 .chats-boxes {
-  border-radius: 6px;
-  width: 96%;
+  border-radius: 5px;
+  width: 100%;
   background-color: gainsboro;
   margin: 10px auto;
-  height: 58px;
-  padding: 3px 3px;
+  max-height: 60px;
+  padding: 10px 10px;
 }
 
 @media screen and (max-width: 800px) {
   .my-chats {
-    flex-basis: 100%;
+    width: 100%;
+    margin-top: 20px;
   }
 }

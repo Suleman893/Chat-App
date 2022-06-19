@@ -1,9 +1,10 @@
 import { ChatState } from "../Context/ChatProvider";
-import SideDrawer from "../Components/SideDrawer";
-import MyChats from "../Components/MyChats";
-import ChatBox from "../Components/ChatBox";
-import Header from "../Components/Header";
+import SideDrawer from "../Components/ChatComponent/SideDrawer";
+import MyChats from "../Components/ChatComponent/MyChats";
+import ChatBox from "../Components/ChatComponent/ChatBox";
+import Header from "../Components/Layout/Header";
 import { useState } from "react";
+import Footer from "../Components/Layout/Footer";
 import "./ChatPage.css";
 const ChatPage = () => {
   const { user } = ChatState();
@@ -18,6 +19,7 @@ const ChatPage = () => {
           <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
         )}
       </div>
+      <Footer />
     </>
   );
 };

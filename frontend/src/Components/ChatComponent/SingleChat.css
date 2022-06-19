@@ -1,0 +1,13 @@
+.abc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.not-selected-message {
+  width: 80%;
+  margin: 0 auto;
+}
+.not-selected-message p {
+  font-size: 25px;
+}

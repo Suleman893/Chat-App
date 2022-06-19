@@ -1,10 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ChatState } from "../Context/ChatProvider";
+import { ChatState } from "../../Context/ChatProvider";
 import { getSender } from "./Chat";
-
 import "./MyChats.css";
-import GroupModal from "./GroupModal";
+import GroupModal from "../Modals/GroupModal";
 const MyChats = ({ fetchAgain }) => {
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
   //For modal
@@ -37,13 +36,10 @@ const MyChats = ({ fetchAgain }) => {
       <div className="my-chats">
         <div className="my-chats-container">
           <div className="my-chats-container-content">
-            <p> My Chats</p>{" "}
-            <button onClick={handleShow}>New group chat +</button>
+            <p> My Chats</p> <button onClick={handleShow}>New group </button>
           </div>
 
-          {show && (
-            <GroupModal handleShow={handleShow} show={show}/>
-          )}
+          {show && <GroupModal handleShow={handleShow} show={show} />}
           {chats ? (
             chats.map((chat) => (
               <div

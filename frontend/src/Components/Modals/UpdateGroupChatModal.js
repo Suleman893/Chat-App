@@ -2,8 +2,8 @@ import React from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import { useState } from "react";
-import { ChatState } from "../Context/ChatProvider";
-import UserListItem from "./UserListItem";
+import { ChatState } from "../../Context/ChatProvider";
+import UserListItem from "../UserListItem";
 import { GrUpdate } from "react-icons/gr";
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
   const [groupChatName, setGroupChatName] = useState();

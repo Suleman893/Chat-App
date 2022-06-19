@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Form } from "react-bootstrap";
-import UserListItem from "./UserListItem";
-import UserBadgeItem from "./UserBadgeItem";
+import UserListItem from "../UserListItem";
+import UserBadgeItem from "../UserBadgeItem";
 import axios from "axios";
-import { ChatState } from "../Context/ChatProvider";
+import { ChatState } from "../../Context/ChatProvider";
 
 const GroupModal = ({ handleShow, show }) => {
   const { user, chats, setChats } = ChatState();

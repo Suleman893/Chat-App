@@ -2,7 +2,7 @@ import "./App.css";
 import { Route } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import ChatPage from "./Pages/ChatPage";
-import Signup from "./Components/Signup";
+import Signup from "./Components/Account/Signup";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ChatState } from "../Context/ChatProvider";
-import UserListItem from "./UserListItem";
+import { ChatState } from "../../Context/ChatProvider";
+import UserListItem from "../UserListItem";
 import "./SideDrawer.css";
 import { RiUserSearchLine } from "react-icons/ri";
 const SideDrawer = () => {
@@ -63,10 +63,9 @@ const SideDrawer = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <RiUserSearchLine
-            onClick={handleSearch}
-            style={{ color: "red", fontSize: "20px" }}
-          />
+          <div>
+            <RiUserSearchLine onClick={handleSearch} className="search-icon" />
+          </div>
           {loading ? (
             <h1>Loading</h1>
           ) : (

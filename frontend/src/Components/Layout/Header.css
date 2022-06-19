@@ -4,13 +4,25 @@
   align-items: center;
   max-width: 1400px;
   width: 90%;
+  min-height: 15vh;
   margin: auto;
   padding-left: 25px;
   padding-right: 25px;
 }
 
-.second ul {
+.header-logo h2 {
+  letter-spacing: 5px;
+}
+.header-menu ul {
   display: flex;
   list-style: none;
   cursor: pointer;
+}
+
+.header-menu li {
+  padding-right: 7px;
+}
+
+.icons-font-size {
+  font-size: 22px;
 }

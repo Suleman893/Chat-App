@@ -1,5 +1,5 @@
 .chat-box {
-  flex-basis: 40%;
+  width: 40%;
   background-color: #fff;
   border-radius: 15px;
 }
@@ -10,6 +10,7 @@
 
 @media screen and (max-width: 800px) {
   .chat-box {
-    flex-basis: 100%;
+    width: 100%;
+    margin-top: 20px;
   }
 }

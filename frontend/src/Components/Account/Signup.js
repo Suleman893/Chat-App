@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import account from "../assets/account.png";
+import account from "../../assets/account.png";
 import "./Signup.css";
 
 const Signup = () => {
