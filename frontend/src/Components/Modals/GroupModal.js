@@ -5,6 +5,8 @@ import UserBadgeItem from "../UserBadgeItem";
 import axios from "axios";
 import { ChatState } from "../../Context/ChatProvider";
 import "./GroupModal.css";
+import Zoom from "react-reveal/Zoom";
+
 
 const GroupModal = ({ handleShow, show }) => {
   const { user, chats, setChats } = ChatState();
@@ -73,51 +75,59 @@ const GroupModal = ({ handleShow, show }) => {
   const handleClose = () => handleShow(!show);
 
   return (
-    <Modal centered show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Create Group Chat</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Chat Name</Form.Label>
-            <Form.Control
-              placeholder="Chatname"
-              onChange={(e) => setGroupChatName(e.target.value)}
+    <>
+      <Modal centered show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create Group Chat</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Zoom>
+            <Form>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Chat Name</Form.Label>
+                <Form.Control
+                  placeholder="Chatname"
+                  onChange={(e) => setGroupChatName(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group
+                placeholder="Add Users"
+                onChange={(e) => handleSearch(e.target.value)}
+              >
+                <Form.Label>Add Users</Form.Label>
+                <Form.Control as="textarea" rows={3} />
+              </Form.Group>
+            </Form>
+          </Zoom>
+          {selectedUsers?.map((u) => (
+            <div className="user-bagde-items">
+                <UserBadgeItem
+                  key={u._id}
+                  user={u}
+                  handleFunction={() => handleDelete(u)}
+                />
+       
+            </div>
+          ))}
+          {searchResult?.slice(0, 4).map((user) => (
+            <UserListItem
+              key={user._id}
+              user={user}
+              handleFunction={() => handleGroup(user)}
             />
-          </Form.Group>
-          <Form.Group
-            placeholder="Add Users"
-            onChange={(e) => handleSearch(e.target.value)}
-          >
-            <Form.Label>Add Users</Form.Label>
-            <Form.Control as="textarea" rows={3} />
-          </Form.Group>
-        </Form>
-        {selectedUsers?.map((u) => (
-          <div className="user-bagde-items">
-            <UserBadgeItem
-              key={u._id}
-              user={u}
-              handleFunction={() => handleDelete(u)}
-            />
-          </div>
-        ))}
-        {searchResult?.slice(0, 4).map((user) => (
-          <UserListItem
-            key={user._id}
-            user={user}
-            handleFunction={() => handleGroup(user)}
-          />
-        ))}
-      </Modal.Body>
-      <Modal.Footer>
-        <button onClick={handleClose}>Cancel</button>
-        <button variant="primary" onClick={handleSubmit}>
-          Create Group
-        </button>
-      </Modal.Footer>
-    </Modal>
+          ))}
+        </Modal.Body>
+        <Modal.Footer>
+          <button onClick={handleClose}>Cancel</button>
+          <button variant="primary" onClick={handleSubmit}>
+            Create Group
+          </button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 

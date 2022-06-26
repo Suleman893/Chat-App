@@ -1,16 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import ChatProvider from "./Context/ChatProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.render(
   <BrowserRouter>
     <ChatProvider>
       <App />
     </ChatProvider>
-  </BrowserRouter>
+  </BrowserRouter>,
+  document.getElementById("root")
 );

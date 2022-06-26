@@ -4,7 +4,7 @@ import { ChatState } from "../../Context/ChatProvider";
 import UserListItem from "../UserListItem";
 import "./SideDrawer.css";
 import { RiUserSearchLine } from "react-icons/ri";
-
+import Bounce from "react-reveal/Bounce";
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -55,35 +55,40 @@ const SideDrawer = () => {
 
   return (
     <>
-      <div className="side-drawer">
-        <div className="side-drawer-container">
-          <input
-            placeholder="Search User..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <div>
-            <RiUserSearchLine onClick={handleSearch} className="search-icon" />
+      <Bounce>
+        <div className="side-drawer">
+          <div className="side-drawer-container">
+            <input
+              placeholder="autocompleteoff"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <div>
+              <RiUserSearchLine
+                onClick={handleSearch}
+                className="search-icon"
+              />
+            </div>
+            {loading ? (
+              <h1>Loading</h1>
+            ) : (
+              <>
+                <p>
+                  {searchResult?.map((user) => (
+                    <div className="div-flexer">
+                      <UserListItem
+                        key={user._id}
+                        user={user}
+                        handleFunction={() => accessChat(user._id)}
+                      />
+                    </div>
+                  ))}
+                </p>
+              </>
+            )}
           </div>
-          {loading ? (
-            <h1>Loading</h1>
-          ) : (
-            <>
-              <p>
-                {searchResult?.map((user) => (
-                  <div className="div-flexer">
-                    <UserListItem
-                      key={user._id}
-                      user={user}
-                      handleFunction={() => accessChat(user._id)}
-                    />
-                  </div>
-                ))}
-              </p>
-            </>
-          )}
         </div>
-      </div>
+      </Bounce>
     </>
   );
 };
