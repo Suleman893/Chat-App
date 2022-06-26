@@ -5,8 +5,18 @@ import { getSender } from "./Chat";
 import "./MyChats.css";
 import GroupModal from "../Modals/GroupModal";
 import Bounce from "react-reveal/Bounce";
+import AppSpinner from "../Layout/AppSpinner";
+import Swal from "sweetalert2";
 
 const MyChats = ({ fetchAgain }) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
+
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
   const [show, setShow] = useState(false);
@@ -23,7 +33,10 @@ const MyChats = ({ fetchAgain }) => {
       const { data } = await axios.get("/api/chat", config);
       setChats(data);
     } catch (error) {
-      alert("The error while fetching all chat is" + error);
+      Toast.fire({
+        icon: "error",
+        title: "Error while fetching all chats",
+      });
     }
   };
 
@@ -63,7 +76,7 @@ const MyChats = ({ fetchAgain }) => {
                 ))}
               </div>
             ) : (
-              <h1>Loading...</h1>
+              <AppSpinner />
             )}
           </div>
         </div>

@@ -6,6 +6,7 @@ import Header from "../Components/Layout/Header";
 import { useState } from "react";
 import Footer from "../Components/Layout/Footer";
 import "./ChatPage.css";
+
 const ChatPage = () => {
   const { user } = ChatState();
   const [fetchAgain, setFetchAgain] = useState(false);

@@ -9,12 +9,21 @@ import "./SingleChat.css";
 import axios from "axios";
 import ScrollableChat from "../ScrollableChat";
 import io from "socket.io-client";
+import AppSpinner from "../Layout/AppSpinner";
+import Swal from "sweetalert2";
 
 //SocketIO EndPoints
 const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState("");
@@ -33,9 +42,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-
       setLoading(true);
-
       const { data } = await axios.get(
         `/api/message/${selectedChat._id}`,
         config
@@ -45,7 +52,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       setLoading(false);
       socket.emit("join chat", selectedChat._id);
     } catch (error) {
-      alert("Failed to load messages");
+      Toast.fire({
+        icon: "error",
+        title: "Failed to load messages",
+      });
     }
   };
 
@@ -72,7 +82,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         socket.emit("new message", data);
         setMessages([...messages, data]);
       } catch (error) {
-        alert("Failed to send message", error);
+        Toast.fire({
+          icon: "error",
+          title: "Failed to send messages",
+        });
       }
     }
   };
@@ -138,7 +151,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             )}
           </div>
           {loading ? (
-            <p>Loading</p>
+            <AppSpinner />
           ) : (
             <div
               style={{

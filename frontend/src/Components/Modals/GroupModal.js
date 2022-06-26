@@ -6,9 +6,16 @@ import axios from "axios";
 import { ChatState } from "../../Context/ChatProvider";
 import "./GroupModal.css";
 import Zoom from "react-reveal/Zoom";
-
+import Swal from "sweetalert2";
 
 const GroupModal = ({ handleShow, show }) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
   const { user, chats, setChats } = ChatState();
   const [groupChatName, setGroupChatName] = useState();
   const [selectedUsers, setSelectedUsers] = useState([]);
@@ -21,7 +28,10 @@ const GroupModal = ({ handleShow, show }) => {
 
   const handleGroup = (userToAdd) => {
     if (selectedUsers.includes(userToAdd)) {
-      alert("User already added");
+      Toast.fire({
+        icon: "error",
+        title: "User already added",
+      });
       return;
     }
     setSelectedUsers([...selectedUsers, userToAdd]);
@@ -41,13 +51,19 @@ const GroupModal = ({ handleShow, show }) => {
       const { data } = await axios.get(`/api/user?search=${search}`, config);
       setSearchResult(data);
     } catch (error) {
-      alert("Error");
+      Toast.fire({
+        icon: "error",
+        title: "Error while fetching",
+      });
     }
   };
 
   const handleSubmit = async () => {
     if (!groupChatName || !selectedUsers) {
-      alert("Please fill all the fields");
+      Toast.fire({
+        icon: "error",
+        title: "Please fill all the flieds",
+      });
       return;
     }
     try {
@@ -66,9 +82,15 @@ const GroupModal = ({ handleShow, show }) => {
         config
       );
       setChats([data, ...chats]);
-      alert("New group chat created");
+      Toast.fire({
+        icon: "success",
+        title: "New Group Created",
+      });
     } catch (error) {
-      alert("Failed to create the chat");
+      Toast.fire({
+        icon: "error",
+        title: "Error while creating new group",
+      });
     }
   };
 
@@ -104,12 +126,11 @@ const GroupModal = ({ handleShow, show }) => {
           </Zoom>
           {selectedUsers?.map((u) => (
             <div className="user-bagde-items">
-                <UserBadgeItem
-                  key={u._id}
-                  user={u}
-                  handleFunction={() => handleDelete(u)}
-                />
-       
+              <UserBadgeItem
+                key={u._id}
+                user={u}
+                handleFunction={() => handleDelete(u)}
+              />
             </div>
           ))}
           {searchResult?.slice(0, 4).map((user) => (

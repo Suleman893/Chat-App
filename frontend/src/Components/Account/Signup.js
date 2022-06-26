@@ -4,8 +4,18 @@ import { Link, useHistory } from "react-router-dom";
 import account from "../../assets/account.png";
 import Bounce from "react-reveal/Bounce";
 import "./Signup.css";
+import AppSpinner from "../Layout/AppSpinner";
+import Swal from "sweetalert2";
 
 const Signup = () => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
+
   const history = useHistory();
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -22,12 +32,18 @@ const Signup = () => {
   const submitHandler = async () => {
     setLoading(true);
     if (!name || !email || !password || !confirmPassword) {
-      alert("Please fill all the fields");
+      Toast.fire({
+        icon: "error",
+        title: "Please Fill All Fields",
+      });
       setLoading(false);
       return;
     }
     if (password !== confirmPassword) {
-      alert("Password dont match");
+      Toast.fire({
+        icon: "error",
+        title: "Password Dont Match",
+      });
       return;
     }
     try {
@@ -42,19 +58,28 @@ const Signup = () => {
         { name, email, password },
         config
       );
-
-      alert("User Signup successfully");
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      if (data) {
+        Toast.fire({
+          icon: "success",
+          title: "Login Successfully",
+        });
+      }
       setLoading(false);
+      localStorage.setItem("userInfo", JSON.stringify(data));
       history.push("/chats");
     } catch (error) {
-      alert("Error occured");
       setLoading(false);
+      Toast.fire({
+        icon: "error",
+        title: "Sorry Error Occured While Signup",
+      });
     }
   };
   return (
-    <>
-      <div className="signupbox">
+    <div className="signupbox">
+      {loading ? (
+        <AppSpinner />
+      ) : (
         <Bounce>
           <img src={account} className="avatar" />
           <h1>Signup Here</h1>
@@ -104,8 +129,8 @@ const Signup = () => {
           <button onClick={submitHandler}>Signup</button>
           <Link to="/">Already have an account? </Link>
         </Bounce>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 

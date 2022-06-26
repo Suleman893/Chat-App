@@ -3,8 +3,18 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 import Bounce from "react-reveal/Bounce";
+import AppSpinner from "../Layout/AppSpinner";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
+
   const history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -18,7 +28,10 @@ const Login = () => {
   const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
-      alert("Please fill all the fields");
+      Toast.fire({
+        icon: "error",
+        title: "Please Fill All Fields",
+      });
       setLoading(false);
       return;
     }
@@ -33,19 +46,29 @@ const Login = () => {
         { email, password },
         config
       );
-
-      alert("Login done successfully");
+      if (data) {
+        Toast.fire({
+          icon: "success",
+          title: "Signup Successfully",
+        });
+      }
+      setLoading(false);
       localStorage.setItem("userInfo", JSON.stringify(data));
       history.push("/chats");
     } catch (error) {
-      alert("Error occured");
       setLoading(false);
+      Toast.fire({
+        icon: "error",
+        title: "Sorry Error Occured While Login",
+      });
     }
   };
 
   return (
-    <>
-      <div className="loginbox">
+    <div className="loginbox">
+      {loading ? (
+        <AppSpinner />
+      ) : (
         <Bounce>
           <h1>Login Here</h1>
           <p>Email</p>
@@ -82,8 +105,8 @@ const Login = () => {
 
           <Link to="/signup">Dont have an account? </Link>
         </Bounce>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 

@@ -5,7 +5,17 @@ import { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
 import UserListItem from "../UserListItem";
 import { GrUpdate } from "react-icons/gr";
+import Swal from "sweetalert2";
+
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
+
   const [groupChatName, setGroupChatName] = useState();
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -15,11 +25,17 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
 
   const handleAddUser = async (user1) => {
     if (selectedChat.users.find((u) => u._id === user1._id)) {
-      alert("User Alerady in group");
+      Toast.fire({
+        icon: "error",
+        title: "User already added",
+      });
       return;
     }
     if (selectedChat.groupAdmin._id !== user._id) {
-      alert("Only admins can add someone");
+      Toast.fire({
+        icon: "error",
+        title: "Only admins can add someone",
+      });
       return;
     }
     try {
@@ -39,7 +55,10 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       setSelectedChat(data);
       setFetchAgain(!fetchAgain);
     } catch (error) {
-      alert("Error Occured");
+      Toast.fire({
+        icon: "error",
+        title: "Error while adding user",
+      });
     }
   };
 
@@ -62,13 +81,19 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       setSelectedChat(data);
       setFetchAgain(!fetchAgain);
     } catch (error) {
-      alert("Error Occured While Update");
+      Toast.fire({
+        icon: "error",
+        title: "Error Occured While Update",
+      });
     }
     setGroupChatName("");
   };
   const handleRemove = async (user1) => {
     if (selectedChat.groupAdmin._id !== user._id && user1._id !== user._id) {
-      alert("Only admins can remove someone");
+      Toast.fire({
+        icon: "error",
+        title: "Only admins can remove someone",
+      });
       return;
     }
     try {
@@ -89,7 +114,10 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       setFetchAgain(!fetchAgain);
       fetchMessages();
     } catch (err) {
-      alert("Error Occured");
+      Toast.fire({
+        icon: "error",
+        title: "Error occured while removing",
+      });
     }
   };
 
@@ -107,7 +135,10 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       const { data } = await axios.get(`/api/user?search=${search}`, config);
       setSearchResult(data);
     } catch (error) {
-      alert("Error");
+      Toast.fire({
+        icon: "error",
+        title: "Error occured while searching",
+      });
     }
   };
 

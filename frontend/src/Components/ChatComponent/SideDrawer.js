@@ -5,36 +5,57 @@ import UserListItem from "../UserListItem";
 import "./SideDrawer.css";
 import { RiUserSearchLine } from "react-icons/ri";
 import Bounce from "react-reveal/Bounce";
+import AppSpinner from "../Layout/AppSpinner";
+import Swal from "sweetalert2";
+
 const SideDrawer = () => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const { loading, setLoading } = useState(false);
-  const { loadingChat, setLoadingChat } = useState();
+  // const { loadingChat, setLoadingChat } = useState(false);
+
   const { user, setSelectedChat, chats, setChats } = ChatState();
 
   const handleSearch = async () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "bottom-end",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
     if (!search) {
-      alert("Enter something to search");
+      Toast.fire({
+        icon: "error",
+        title: "Enter Something to Search",
+      });
       return;
     }
     try {
-      // setLoading(true);
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       };
       const { data } = await axios.get(`/api/user?search=${search}`, config);
-      // setLoading(false);
       setSearchResult(data);
     } catch (error) {
-      alert("Failed to search");
+      Toast.fire({
+        icon: "error",
+        title: "Failed to search",
+      });
     }
   };
 
   const accessChat = async (userId) => {
     try {
-      // setLoadingChat(true);
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -46,10 +67,11 @@ const SideDrawer = () => {
         setChats([data, ...chats]);
       }
       setSelectedChat(data);
-      // setLoadingChat(false);
-      // onClose();
     } catch (error) {
-      alert("The error while fetching the chat ");
+      Toast.fire({
+        icon: "error",
+        title: "Error while fetching the chat",
+      });
     }
   };
 
@@ -70,7 +92,7 @@ const SideDrawer = () => {
               />
             </div>
             {loading ? (
-              <h1>Loading</h1>
+              <AppSpinner />
             ) : (
               <>
                 <p>
