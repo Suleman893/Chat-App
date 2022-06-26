@@ -26,7 +26,15 @@
 }
 
 .single-chat-type input {
+  caret-color: #00b712;
   min-width: 100%;
-  border-radius: 10px;
-  padding: 2px 8px;
+  margin-bottom: 20px;
+  height: 40px;
+  padding: 3px 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  outline: none;
+  color: #000;
+  font-size: 16px;
 }

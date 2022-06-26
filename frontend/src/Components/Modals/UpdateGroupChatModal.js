@@ -6,6 +6,7 @@ import { ChatState } from "../../Context/ChatProvider";
 import UserListItem from "../UserListItem";
 import { GrUpdate } from "react-icons/gr";
 import Swal from "sweetalert2";
+import Zoom from "react-reveal/Zoom";
 
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
   const Toast = Swal.mixin({
@@ -151,37 +152,42 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
           <Modal.Title>{selectedChat.chatName}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div>
-            {selectedChat.users.map((u) => (
-              <div>
-                <div key={user._id}>{u.name}</div>
-                <button onClick={() => handleRemove(u)}>x</button>
-              </div>
-            ))}
-          </div>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Update Group</Form.Label>
-              <Form.Control
-                placeholder="Rename group"
-                value={groupChatName}
-                onChange={(e) => setGroupChatName(e.target.value)}
-              />
-              <Form.Label>Add User to Group</Form.Label>
-              <Form.Control
-                placeholder="Add User to Group"
-                onChange={(e) => handleSearch(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
+          <Zoom>
+            <div>
+              {selectedChat.users.map((u) => (
+                <div>
+                  <div key={user._id}>{u.name}</div>
+                  <button onClick={() => handleRemove(u)}>x</button>
+                </div>
+              ))}
+            </div>
+            <Form>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>Update Group</Form.Label>
+                <Form.Control
+                  placeholder="Rename group"
+                  value={groupChatName}
+                  onChange={(e) => setGroupChatName(e.target.value)}
+                />
+                <Form.Label>Add User to Group</Form.Label>
+                <Form.Control
+                  placeholder="Add User to Group"
+                  onChange={(e) => handleSearch(e.target.value)}
+                />
+              </Form.Group>
+            </Form>
 
-          {searchResult?.map((user) => (
-            <UserListItem
-              key={user._id}
-              user={user}
-              handleFunction={() => handleAddUser(user)}
-            />
-          ))}
+            {searchResult?.map((user) => (
+              <UserListItem
+                key={user._id}
+                user={user}
+                handleFunction={() => handleAddUser(user)}
+              />
+            ))}
+          </Zoom>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleShow}>

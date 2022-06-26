@@ -34,6 +34,19 @@
   margin-bottom: 20px;
   height: 40px;
   padding: 3px 10px;
+  caret-color: red;
+}
+
+.loginbox input[type="email"]:invalid {
+  border-bottom: 1px solid red;
+}
+
+.loginbox input[type="email"]:valid {
+  border-bottom: 1px solid #00b712;
+}
+
+.login input::placeholder {
+  font-weight: 600;
 }
 
 .loginbox input[type="email"],
@@ -48,31 +61,34 @@ input[type="text"] {
 }
 
 .loginbox button {
+  margin: 0 1%;
   border: none;
   outline: none;
-  height: 40px;
-  background: #fb2525;
-  color: #000;
+  height: 38px;
+  background: #00b712;
+  color: #fff;
   border-radius: 20px;
   font-size: 18px;
+  width: 30%;
 }
 
 .loginbox button:hover {
   cursor: pointer;
-  background: #ffc107;
-  color: #000;
+  background: #00b712;
+  color: #fff;
 }
 
 .loginbox a {
   display: block;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 20px;
   color: #000;
+  font-weight: 700;
 }
 
 .loginbox a:hover {
-  color: #ffc107;
+  color: #00b712;
 }
 
 .avatar {

@@ -70,40 +70,41 @@ const Login = () => {
         <AppSpinner />
       ) : (
         <Bounce>
-          <h1>Login Here</h1>
-          <p>Email</p>
-
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-          <p>Password</p>
-
-          <input
-            placeholder="Enter your password"
-            value={password}
-            type={show ? "text" : "password"}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-
-          <button onClick={handlePasswordShow}>{show ? "Hide" : "Show"}</button>
-          <button onClick={submitHandler}>Login</button>
-          <button
-            onClick={() => {
-              setEmail("guest@example.com");
-              setPassword("123456");
-            }}
-          >
-            Guest
-          </button>
-
-          <Link to="/signup">Dont have an account? </Link>
+          <form>
+            {" "}
+            <h1>Login Here</h1>
+            <p>Email</p>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <p>Password</p>
+            <input
+              placeholder="Enter your password"
+              value={password}
+              type={show ? "text" : "password"}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+            <button onClick={handlePasswordShow}>
+              {show ? "Hide" : "Show"}
+            </button>
+            <button onClick={submitHandler}>Login</button>
+            <button
+              onClick={() => {
+                setEmail("guest@example.com");
+                setPassword("123456");
+              }}
+            >
+              Guest
+            </button>
+            <Link to="/signup">Dont have an account? </Link>
+          </form>
         </Bounce>
       )}
     </div>

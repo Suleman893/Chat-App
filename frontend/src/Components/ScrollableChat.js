@@ -12,7 +12,7 @@ const ScrollableChat = ({ messages }) => {
   const { user } = ChatState();
   return (
     <ScrollableFeed>
-      {messages &&
+      {messages.length ? (
         messages.map((m, i) => (
           <div style={{ display: "flex" }} key={m._id}>
             {(isSameSender(messages, m, i, user._id) ||
@@ -21,7 +21,7 @@ const ScrollableChat = ({ messages }) => {
               className="one-message-style"
               style={{
                 backgroundColor: `${
-                  m.sender._id === user._id ? "#bee3f8" : "#b9f5d0"
+                  m.sender._id === user._id ? "#99ccff" : "#b9f5d0"
                 }`,
                 marginLeft: isSameSenderMargin(messages, m, i, user._id),
               }}
@@ -29,7 +29,12 @@ const ScrollableChat = ({ messages }) => {
               {m.content}
             </span>
           </div>
-        ))}
+        ))
+      ) : (
+        <div className="no-message">
+          <p>No message yet with this user</p>
+        </div>
+      )}
     </ScrollableFeed>
   );
 };

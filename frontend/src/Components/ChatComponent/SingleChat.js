@@ -157,7 +157,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               <ScrollableChat messages={messages} />
             </div>
           )}
-          <div onKeyDown={sendMessage} tabIndex="0" className="single-chat-type">
+          <div
+            onKeyDown={sendMessage}
+            tabIndex="0"
+            className="single-chat-type"
+          >
             <input
               placeholder="Enter a message..."
               value={newMessage}

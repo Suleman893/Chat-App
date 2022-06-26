@@ -13,9 +13,17 @@
 }
 
 .side-drawer-container input {
-  border-radius: 10px;
-  width: 88%;
-  padding: 2px 8px;
+  caret-color: #00b712;
+  width: 85%;
+  margin-bottom: 20px;
+  height: 40px;
+  padding: 3px 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  outline: none;
+  color: #000;
+  font-size: 16px;
 }
 
 .search-icon {
