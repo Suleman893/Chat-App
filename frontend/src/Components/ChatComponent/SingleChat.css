@@ -11,3 +11,22 @@
 .not-selected-message p {
   font-size: 25px;
 }
+
+.chat-bg {
+  margin: 10px auto;
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none;
+  background: url(../../assets/chatbg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.single-chat-type input {
+  min-width: 100%;
+  border-radius: 10px;
+  padding: 2px 8px;
+}

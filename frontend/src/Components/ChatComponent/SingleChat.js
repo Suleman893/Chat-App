@@ -11,7 +11,7 @@ import ScrollableChat from "../ScrollableChat";
 import io from "socket.io-client";
 import AppSpinner from "../Layout/AppSpinner";
 import Swal from "sweetalert2";
-
+import "./SingleChat.css";
 //SocketIO EndPoints
 const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
@@ -153,18 +153,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           {loading ? (
             <AppSpinner />
           ) : (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                overflowY: "scroll",
-                scrollbarWidth: "none",
-              }}
-            >
+            <div className="chat-bg">
               <ScrollableChat messages={messages} />
             </div>
           )}
-          <div onKeyDown={sendMessage} tabIndex="0">
+          <div onKeyDown={sendMessage} tabIndex="0" className="single-chat-type">
             <input
               placeholder="Enter a message..."
               value={newMessage}
