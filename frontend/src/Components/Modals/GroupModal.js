@@ -105,10 +105,7 @@ const GroupModal = ({ handleShow, show }) => {
         <Modal.Body>
           <Zoom>
             <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
+              <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Chat Name</Form.Label>
                 <Form.Control
                   placeholder="Chatname"

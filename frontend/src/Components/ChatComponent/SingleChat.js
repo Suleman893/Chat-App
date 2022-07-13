@@ -122,7 +122,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   };
 
   return (
-    <>
+    <div>
       {selectedChat ? (
         <>
           <div className="single-chat">
@@ -176,7 +176,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

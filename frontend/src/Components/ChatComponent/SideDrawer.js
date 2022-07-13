@@ -26,7 +26,7 @@ const SideDrawer = () => {
   const handleSearch = async () => {
     const Toast = Swal.mixin({
       toast: true,
-      position: "bottom-end",
+      position: "top",
       showConfirmButton: false,
       timer: 2000,
       timerProgressBar: true,
@@ -81,7 +81,7 @@ const SideDrawer = () => {
         <div className="side-drawer">
           <div className="side-drawer-container">
             <input
-              placeholder="autocompleteoff"
+              placeholder="Enter user name"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />

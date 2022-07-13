@@ -7,6 +7,7 @@ import GroupModal from "../Modals/GroupModal";
 import Bounce from "react-reveal/Bounce";
 import AppSpinner from "../Layout/AppSpinner";
 import Swal from "sweetalert2";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 
 const MyChats = ({ fetchAgain }) => {
   const Toast = Swal.mixin({
@@ -51,7 +52,11 @@ const MyChats = ({ fetchAgain }) => {
         <div className="my-chats">
           <div className="my-chats-container">
             <div className="my-chats-container-content">
-              <p> My Chats</p> <button onClick={handleShow}>New group </button>
+              <p> My Chats</p>{" "}
+              <AiOutlineUsergroupAdd
+                style={{ fontSize: "28px", color: "green" }}
+                onClick={handleShow}
+              />
             </div>
             {show && <GroupModal handleShow={handleShow} show={show} />}
             {chats ? (
