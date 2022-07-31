@@ -1,9 +1,10 @@
 const asyncHandler = require("express-async-handler");
 const generateToken = require("../config/generateToken");
 const User = require("../models/userModel");
+const { cloudinary } = require("../utils/cloudinary");
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, pic } = req.body;
+  const { name, email, password, previewSource } = req.body;
   if (!name || !email || !password) {
     res.status(400);
     throw new Error("Please Enter All Fields");
@@ -13,11 +14,17 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("User already exist");
   }
+
+  const uploadResponse = await cloudinary.uploader.upload(previewSource, {
+    upload_preset: "Chat-App",
+  });
+  console.log("ye", uploadResponse);
+
   const user = await User.create({
     name,
     email,
     password,
-    pic,
+    pic: uploadResponse.url,
   });
 
   if (user) {

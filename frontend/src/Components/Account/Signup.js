@@ -21,13 +21,27 @@ const Signup = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
-  // const [pic, setPic] = useState();
+  const [fileInputState, setFileInputState] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
+  const [previewSource, setPreviewSource] = useState();
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
   const handlePasswordShow = () => {
     setShow(!show);
   };
-  // const postDetails = (pics) => {}; //for cloudinary
+
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    previewFile(file);
+  };
+
+  const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    };
+  };
 
   const submitHandler = async () => {
     setLoading(true);
@@ -52,10 +66,9 @@ const Signup = () => {
           "Content-type": "application/json",
         },
       };
-
       const { data } = await axios.post(
         "/api/user",
-        { name, email, password },
+        { name, email, password, previewSource },
         config
       );
       if (data) {
@@ -69,6 +82,7 @@ const Signup = () => {
       history.push("/chats");
     } catch (error) {
       setLoading(false);
+      console.log("The error", error);
       Toast.fire({
         icon: "error",
         title: "Sorry Error Occured While Signup",
@@ -81,50 +95,57 @@ const Signup = () => {
         <AppSpinner />
       ) : (
         <Bounce>
-          <img src={account} className="avatar" />
+          <img
+            src={previewSource ? previewSource : account}
+            alt="signup"
+            className="avatar"
+          />
           <h1>Signup Here</h1>
-          <p>Name</p>
-          <input
-            type="text"
-            placeholder="Enter your name"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
+          <form>
+            <p>Name</p>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
 
-          <p>Email</p>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
+            <p>Email</p>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
 
-          <p>Password</p>
-          <input
-            placeholder="Enter your password"
-            type={show ? "text" : "password"}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
+            <p>Password</p>
+            <input
+              placeholder="Enter your password"
+              type={show ? "text" : "password"}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
 
-          <p>Confirm Password</p>
-          <input
-            type={show ? "text" : "password"}
-            placeholder="Enter the confirm password"
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-            }}
-          />
-          {/*
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => postDetails(e.target.files[0])}
-      />
-      */}
+            <p>Confirm Password</p>
+            <input
+              type={show ? "text" : "password"}
+              placeholder="Enter the confirm password"
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+              }}
+            />
+            <input
+              type="file"
+              name="image"
+              onChange={handleFileInputChange}
+              value={fileInputState}
+              accept="image/*"
+            />
+          </form>
+
           <button onClick={handlePasswordShow}>{show ? "Hide" : "Show"}</button>
           <button onClick={submitHandler}>Signup</button>
           <Link to="/">Already have an account? </Link>

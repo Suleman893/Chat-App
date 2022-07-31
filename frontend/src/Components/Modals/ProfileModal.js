@@ -16,7 +16,7 @@ const ProfileModal = ({ user, show, handleProfileModal }) => {
           <Zoom>
             <div className="user-profile">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/800px-User_icon_2.svg.png"
+                src={user.pic}
                 alt="userpic"
               />
               <div className="user-profile-content">

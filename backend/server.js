@@ -15,6 +15,10 @@ connectDB();
 app.get("/", (req, res) => {
   res.send("Api is running");
 });
+
+app.use(express.static("public"));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);

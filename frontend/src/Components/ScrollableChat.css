@@ -1,7 +1,8 @@
 .one-message-style {
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 5px 5px;
   margin: 2px;
+  min-width: 60px;
 }
 
 .no-message {
@@ -12,4 +13,10 @@
 
 .no-message p {
   font-weight: 600;
+}
+
+.sender-pic {
+  max-width: 10%;
+  border-radius: 50%;
+  object-fit: contain;
 }

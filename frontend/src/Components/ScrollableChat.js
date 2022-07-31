@@ -16,7 +16,9 @@ const ScrollableChat = ({ messages }) => {
         messages.map((m, i) => (
           <div style={{ display: "flex" }} key={m._id}>
             {(isSameSender(messages, m, i, user._id) ||
-              isLastMessage(messages, i, user._id)) && <img alt="avatar" />}
+              isLastMessage(messages, i, user._id)) && (
+              <img src={m.sender.pic} className="sender-pic" alt="userpic" />
+            )}
             <span
               className="one-message-style"
               style={{

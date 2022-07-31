@@ -24,6 +24,11 @@
   padding-right: 10px;
 }
 
+.header-menu li img {
+  max-width: 5%;
+  border-radius: 50%;
+}
+
 .icons-font-size {
   font-size: 22px;
 }
