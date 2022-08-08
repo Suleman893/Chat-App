@@ -1,12 +1,11 @@
-import { ChatState } from "../Context/ChatProvider";
-import SideDrawer from "../Components/ChatComponent/SideDrawer";
-import MyChats from "../Components/ChatComponent/MyChats";
-import ChatBox from "../Components/ChatComponent/ChatBox";
-import Header from "../Components/Layout/Header";
-import { useState } from "react";
-import Footer from "../Components/Layout/Footer";
+import React, { useState } from "react";
+import Header from "../components/Layout/Header";
+import Footer from "../components/Layout/Footer";
 import "./ChatPage.css";
-import React from "react";
+import { ChatState } from "../context/ChatProvider";
+import SideDrawer from "../components/ChatComponent/SideDrawer";
+import MyChats from "../components/ChatComponent/MyChats";
+import ChatBox from "../components/ChatComponent/ChatBox";
 
 const ChatPage = () => {
   const { user } = ChatState();

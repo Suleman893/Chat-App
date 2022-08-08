@@ -1,8 +1,8 @@
 import "./App.css";
 import { Route } from "react-router-dom";
-import HomePage from "./Pages/HomePage";
-import ChatPage from "./Pages/ChatPage";
-import Signup from "./Components/Account/Signup";
+import HomePage from "./pages/HomePage";
+import ChatPage from "./pages/ChatPage";
+import Signup from "./components/Account/Signup";
 
 function App() {
   return (

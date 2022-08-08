@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ChatState } from "../../Context/ChatProvider";
+import { ChatState } from "../../context/ChatProvider";
 import { getSender } from "./Chat";
 import "./MyChats.css";
 import GroupModal from "../Modals/GroupModal";
@@ -55,7 +55,7 @@ const MyChats = ({ fetchAgain }) => {
             <div className="my-chats-container-content">
               <p> My Chats</p>{" "}
               <AiOutlineUsergroupAdd
-                style={{ fontSize: "28px", color: "green", cursor: "pointer" }}
+                style={{ fontSize: "28px", color: "#00b712;", cursor: "pointer" }}
                 onClick={handleShow}
               />
             </div>

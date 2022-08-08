@@ -14,10 +14,11 @@
   cursor: pointer;
   letter-spacing: 2px;
   font-size: 25px;
-  text-shadow: 1.8px 1.8px black;
+  text-shadow: 1.3px 1.3px black;
 }
 
 .header-menu ul {
+  margin-bottom: 0rem;
   display: flex;
   list-style: none;
   cursor: pointer;
@@ -36,6 +37,8 @@
   width: 100%;
 }
 
-.icons-font-size {
-  font-size: 22px;
+.logout-icon {
+  font-size: 25px;
+  color: #ba2b2b;
 }
+

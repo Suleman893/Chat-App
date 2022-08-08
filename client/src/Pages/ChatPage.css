@@ -1,8 +1,8 @@
 .chatpage-container {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  min-height: 80vh;
+  justify-content: space-between;
+  min-height: 70vh;
   max-width: 1400px;
   width: 90%;
   margin: auto;

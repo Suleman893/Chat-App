@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { ChatState } from "../../Context/ChatProvider";
 import UserListItem from "../UserListItem";
 import "./SideDrawer.css";
-import { RiUserSearchLine } from "react-icons/ri";
+import { RiUserSearchFill } from "react-icons/ri";
+
 import Bounce from "react-reveal/Bounce";
 import AppSpinner from "../Layout/AppSpinner";
 import Swal from "sweetalert2";
 
+import { ChatState } from "../../context/ChatProvider";
 const SideDrawer = () => {
   const Toast = Swal.mixin({
     toast: true,
@@ -81,14 +82,14 @@ const SideDrawer = () => {
         <div className="side-drawer">
           <div className="side-drawer-container">
             <input
-              placeholder="Enter user name"
+              placeholder="Search User ..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
             <div>
-              <RiUserSearchLine
+              <RiUserSearchFill
                 onClick={handleSearch}
-                className="search-icon"
+                className="user-search-icon"
               />
             </div>
           </div>

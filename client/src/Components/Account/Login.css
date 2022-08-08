@@ -1,4 +1,4 @@
-.loginbox {
+.login-box {
   width: 400px;
   height: auto;
   background-color: #fff;
@@ -11,46 +11,32 @@
   border-radius: 20px;
 }
 
-.loginbox h1 {
+.login-box h1 {
   margin: 0;
   padding: 0 0 20px;
   text-align: center;
   font-size: 22px;
 }
 
-.loginbox p {
+.login-box p {
   margin: 0;
   padding: 0;
   font-weight: bold;
 }
 
-.loginbox input {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.loginbox input {
+.login-box input {
   width: 100%;
   margin-bottom: 20px;
   height: 40px;
   padding: 3px 10px;
-  caret-color: red;
-}
-
-.loginbox input[type="email"]:invalid {
-  border-bottom: 1px solid red;
-}
-
-.loginbox input[type="email"]:valid {
-  border-bottom: 1px solid #00b712;
+  caret-color: #ff0000;
 }
 
 .login input::placeholder {
   font-weight: 600;
 }
 
-.loginbox input[type="email"],
-input[type="password"],
+.login-box input[type="email"],
 input[type="text"] {
   border: none;
   border-bottom: 1px solid #000;
@@ -70,16 +56,15 @@ input[type="password"] {
   position: relative;
 }
 
-.login-password-hide-show {
-  font-size: 18px;
-  color: green;
-  position: absolute;
-  right: 20px;
-  top: 56%;
-  cursor: pointer;
+.login-box input[type="email"]:invalid {
+  border-bottom: 1px solid red;
 }
 
-.loginbox button {
+.login-box input[type="email"]:valid {
+  border-bottom: 1px solid #00b712;
+}
+
+.login-box button {
   border: none;
   outline: none;
   height: 38px;
@@ -91,13 +76,13 @@ input[type="password"] {
   margin: 5px 0px;
 }
 
-.loginbox button:hover {
+.login-box button:hover {
   cursor: pointer;
   background: #00b712;
   color: #fff;
 }
 
-.loginbox a {
+.login-box a {
   display: block;
   text-decoration: none;
   font-size: 13px;
@@ -106,8 +91,17 @@ input[type="password"] {
   font-weight: 700;
 }
 
-.loginbox a:hover {
+.login-box a:hover {
   color: #00b712;
+}
+
+.login-password-hide-show {
+  font-size: 18px;
+  color: #00b712;
+  position: absolute;
+  right: 20px;
+  top: 57%;
+  cursor: pointer;
 }
 
 .avatar {
@@ -120,7 +114,7 @@ input[type="password"] {
 }
 
 @media screen and (max-width: 800px) {
-  .loginbox {
+  .login-box {
     width: 320px;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ChatState } from "../../Context/ChatProvider";
+import { ChatState } from "../../context/ChatProvider";
 import { getSenderFull, getSender } from "./Chat";
 import UpdateGroupChatModal from "../Modals/UpdateGroupChatModal";
 import { BiArrowBack } from "react-icons/bi";

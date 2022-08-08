@@ -1,6 +1,6 @@
-.signupbox {
-  width: 400px;
+.signup-box {
   /* height:420px; original*/
+  width: 400px;
   height: auto;
   background-color: #fff;
   color: #000;
@@ -10,48 +10,40 @@
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
-  padding: 70px 30px;
+  padding: 65px 30px;
 }
 
-.signupbox h1 {
+.signup-box h1 {
   margin: 0;
-  padding: 0 0 20px;
+  padding: 60px 0 20px;
   text-align: center;
   font-size: 22px;
 }
 
-.signupbox p {
+.signup-box p {
   margin: 0;
   padding: 0;
   font-weight: bold;
 }
 
-.signupbox input {
+.signup-box input {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.signupbox input {
+.signup-box input {
   width: 100%;
   margin-bottom: 20px;
   height: 40px;
   padding: 3px 10px;
-  caret-color: red;
+  caret-color: #ff0000;
 }
 
-.signupbox input::placeholder {
+.signup-box input::placeholder {
   font-weight: 600;
 }
 
-.signupbox input[type="email"]:invalid {
-  border-bottom: 1px solid red;
-}
-
-.signupbox input[type="email"]:valid {
-  border-bottom: 1px solid green;
-}
-
-.signupbox input[type="email"],
+.signup-box input[type="email"],
 input[type="text"] {
   border: none;
   border-bottom: 1px solid#000;
@@ -61,7 +53,7 @@ input[type="text"] {
   font-size: 16px;
 }
 
-.signupbox input[type="password"] {
+.signup-box input[type="password"] {
   border: none;
   border-bottom: 1px solid#000;
   background: transparent;
@@ -71,16 +63,20 @@ input[type="text"] {
   position: relative;
 }
 
-.signup-password-hide-show {
-  font-size: 18px;
-  color: green;
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  cursor: pointer;
+.signup-box input[type="email"]:invalid {
+  border-bottom: 1px solid #ff0000;
 }
 
-.signupbox button {
+.signup-box input[type="email"]:valid {
+  border-bottom: 1px solid green;
+}
+
+.add-image input[type="file"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.signup-box button {
   border: none;
   outline: none;
   height: 38px;
@@ -92,13 +88,13 @@ input[type="text"] {
   margin: 5px 0px;
 }
 
-.signupbox button:hover {
+.signup-box button:hover {
   cursor: pointer;
   background: #00b712;
   color: #fff;
 }
 
-.signupbox a {
+.signup-box a {
   display: block;
   font-size: 13px;
   line-height: 20px;
@@ -107,8 +103,23 @@ input[type="text"] {
   text-decoration: none;
 }
 
-.signupbox a:hover {
+.signup-box a:hover {
   color: #00b712;
+}
+
+.signup-password-hide-show {
+  font-size: 18px;
+  color: #00b712;
+  position: absolute;
+  right: 20px;
+  top: 70%;
+  cursor: pointer;
+}
+
+.add-image {
+  position: absolute;
+  top: 22px;
+  right: 38%;
 }
 
 .avatar {
@@ -121,10 +132,17 @@ input[type="text"] {
 }
 
 @media screen and (max-width: 800px) {
-  .signupbox {
+  .signup-box {
     width: 320px;
   }
-
+  .signup-box h1 {
+    padding: 65px 0 20px;
+  }
+  .add-image {
+    position: absolute;
+    top: 38px;
+    right: 38%;
+  }
   .avatar {
     top: -35px;
   }

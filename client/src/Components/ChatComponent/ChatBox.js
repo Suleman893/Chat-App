@@ -1,6 +1,6 @@
 import React from "react";
 import "./ChatBox.css";
-import { ChatState } from "../../Context/ChatProvider";
+import { ChatState } from "../../context/ChatProvider";
 import SingleChat from "./SingleChat";
 import Bounce from "react-reveal/Bounce";
 

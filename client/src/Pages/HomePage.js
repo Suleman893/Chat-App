@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Login from "../Components/Account/Login";
+import Login from "../components/Account/Login";
 import { useHistory } from "react-router-dom";
 
 const HomePage = () => {

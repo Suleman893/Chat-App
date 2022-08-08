@@ -3,7 +3,7 @@ import { Modal, Form } from "react-bootstrap";
 import UserListItem from "../UserListItem";
 import UserBadgeItem from "../UserBadgeItem";
 import axios from "axios";
-import { ChatState } from "../../Context/ChatProvider";
+import { ChatState } from "../../context/ChatProvider";
 import "./GroupModal.css";
 import Zoom from "react-reveal/Zoom";
 import Swal from "sweetalert2";

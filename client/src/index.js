@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import ChatProvider from "./Context/ChatProvider";
+import ChatProvider from "./context/ChatProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(

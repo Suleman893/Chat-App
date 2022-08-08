@@ -11,7 +11,7 @@ const UserBadgeItem = ({ user, handleFunction }) => {
         <Badge bg="success">
           {user.name}{" "}
           <AiFillDelete
-            style={{ color: "red" }}
+            style={{ color: "#ff0000" }}
             className="badge-icon-font-size"
             onClick={handleFunction}
           />

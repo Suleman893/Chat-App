@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { ChatState } from "../../Context/ChatProvider";
+import { ChatState } from "../../context/ChatProvider";
 import "./Header.css";
 import { TbBellRinging } from "react-icons/tb";
-import { FiLogOut } from "react-icons/fi";
+import { GoSignOut } from "react-icons/go";
 import { NavDropdown, Nav } from "react-bootstrap";
 import ProfileModal from "../Modals/ProfileModal";
 import { getSender } from "../ChatComponent/Chat";
@@ -25,6 +25,7 @@ const Header = () => {
       <div className="header-container">
         <div className="header-logo">
           <h2>Chat App</h2>
+      
         </div>
         <div className="header-menu">
           <ul>
@@ -76,7 +77,7 @@ const Header = () => {
             </li>
             */}
             <li onClick={logoutHandler}>
-              <FiLogOut style={{ color: "red" }} className="icons-font-size" />
+              <GoSignOut className="logout-icon" />
             </li>
           </ul>
         </div>
