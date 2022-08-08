@@ -1,0 +1,40 @@
+.side-drawer {
+  width: 20%;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.side-drawer-container {
+  width: 80%;
+  margin: 1px auto 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.side-drawer-container input {
+  cursor: pointer;
+  caret-color: #00b712;
+  width: 85%;
+  margin-bottom: 20px;
+  height: 40px;
+  padding: 3px 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  outline: none;
+  color: #000;
+  font-size: 16px;
+}
+
+.search-icon {
+  cursor: pointer;
+  color: red;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 800px) {
+  .side-drawer {
+    width: 100%;
+  }
+}

@@ -1,0 +1,42 @@
+.single-chat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.not-selected-message {
+  width: 90%;
+  margin: 0 auto;
+}
+.not-selected-message p {
+  font-size: 18px;
+  text-align: center;
+}
+
+.chat-bg {
+  margin: 10px auto;
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none;
+  background: url(../../assets/chatbg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.single-chat-type input {
+  cursor: pointer;
+  caret-color: #00b712;
+  min-width: 100%;
+  margin-bottom: 20px;
+  height: 40px;
+  padding: 3px 10px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  outline: none;
+  color: #000;
+  font-size: 16px;
+}

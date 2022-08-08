@@ -1,0 +1,41 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  width: 90%;
+  min-height: 15vh;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.header-logo h2 {
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 25px;
+  text-shadow: 1.8px 1.8px black;
+}
+
+.header-menu ul {
+  display: flex;
+  list-style: none;
+  cursor: pointer;
+}
+
+.header-menu li {
+  padding-right: 10px;
+}
+
+.header-img {
+  max-width: 4%;
+  border-radius: 50%;
+}
+
+.header-img img {
+  width: 100%;
+}
+
+.icons-font-size {
+  font-size: 22px;
+}

@@ -1,0 +1,29 @@
+.users-list-container {
+  background: #c8c8c8;
+  border-radius: 5px;
+  width: 90%;
+  margin: auto;
+}
+
+.users-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+.users-list-content {
+  height: 65px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.users-list-img img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 50%;
+}
