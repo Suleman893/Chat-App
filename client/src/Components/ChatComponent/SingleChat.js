@@ -7,23 +7,17 @@ import { CgUserlane } from "react-icons/cg";
 import ProfileModal from "../Modals/ProfileModal";
 import "./SingleChat.css";
 import axios from "axios";
-import ScrollableChat from "../ScrollableChat";
+import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import AppSpinner from "../Layout/AppSpinner";
 import Swal from "sweetalert2";
 import "./SingleChat.css";
+
 //SocketIO EndPoints
 const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "bottom-end",
-    showConfirmButton: false,
-    timer: 2000,
-    timerProgressBar: true,
-  });
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newMessage, setNewMessage] = useState("");
@@ -33,9 +27,16 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const { selectedChat, setSelectedChat, user, notification, setNotification } =
     ChatState();
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "bottom-end",
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
+
   const fetchMessages = async () => {
     if (!selectedChat) return;
-
     try {
       const config = {
         headers: {
@@ -47,7 +48,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         `/api/message/${selectedChat._id}`,
         config
       );
-
       setMessages(data);
       setLoading(false);
       socket.emit("join chat", selectedChat._id);
@@ -125,7 +125,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     <div>
       {selectedChat ? (
         <React.Fragment>
-          <div className="single-chat">
+          <div className="single-chat-info-section">
             <BiArrowBack
               onClick={() => setSelectedChat("")}
               style={{ cursor: "pointer" }}

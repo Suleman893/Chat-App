@@ -1,3 +1,9 @@
+.styles_scrollable-div__prSCv {
+  max-height: inherit;
+  height: inherit;
+  overflow-y: initial !important;
+}
+
 .one-message-style {
   border-radius: 10px;
   padding: 5px 5px;

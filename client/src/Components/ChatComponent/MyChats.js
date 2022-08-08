@@ -1,15 +1,21 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { ChatState } from "../../context/ChatProvider";
 import { getSender } from "./Chat";
-import "./MyChats.css";
 import GroupModal from "../Modals/GroupModal";
 import Bounce from "react-reveal/Bounce";
 import AppSpinner from "../Layout/AppSpinner";
 import Swal from "sweetalert2";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
+import "./MyChats.css";
 
 const MyChats = ({ fetchAgain }) => {
+  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
+
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(!show);
+  const [loggedUser, setLoggedUser] = useState();
+
   const Toast = Swal.mixin({
     toast: true,
     position: "bottom-end",
@@ -17,12 +23,6 @@ const MyChats = ({ fetchAgain }) => {
     timer: 2000,
     timerProgressBar: true,
   });
-
-  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
-
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(!show);
-  const [loggedUser, setLoggedUser] = useState();
 
   const fetchChats = async () => {
     try {
@@ -46,16 +46,19 @@ const MyChats = ({ fetchAgain }) => {
     fetchChats();
   }, [fetchAgain]);
 
-  console.log("The chats", chats);
   return (
     <React.Fragment>
       <Bounce>
         <div className="my-chats">
           <div className="my-chats-container">
-            <div className="my-chats-container-content">
+            <div className="my-chats-title-section">
               <p> My Chats</p>{" "}
               <AiOutlineUsergroupAdd
-                style={{ fontSize: "28px", color: "#00b712;", cursor: "pointer" }}
+                style={{
+                  fontSize: "28px",
+                  color: "#00b712;",
+                  cursor: "pointer",
+                }}
                 onClick={handleShow}
               />
             </div>

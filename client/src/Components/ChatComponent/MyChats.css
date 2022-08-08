@@ -1,24 +1,25 @@
 .my-chats {
   width: 35%;
   border-radius: 15px;
-  background-color: #fff;
+  background-color: rgb(245, 245, 245);
 }
 
 .my-chats-container {
-  width: 80%;
+  width: 90%;
   margin: 10px auto;
 }
 
-.my-chats-container-content {
+.my-chats-title-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.my-chats-container-content p {
+.my-chats-title-section p {
   font-size: 18px;
 }
-.my-chats-container-content button {
+
+.my-chats-title-section button {
   background: none;
   border-radius: 20px;
 }
