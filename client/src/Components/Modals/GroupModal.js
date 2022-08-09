@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { Modal, Form } from "react-bootstrap";
-import UserListItem from "../UserListItem";
-import UserBadgeItem from "../UserBadgeItem";
 import axios from "axios";
 import { ChatState } from "../../context/ChatProvider";
 import "./GroupModal.css";
 import Zoom from "react-reveal/Zoom";
 import Swal from "sweetalert2";
+import { AiFillDelete } from "react-icons/ai";
+import UserListItem from "../UserListItem";
 
 const GroupModal = ({ handleShow, show }) => {
+  const { user, chats, setChats } = ChatState();
+  const [groupChatName, setGroupChatName] = useState();
+  const [selectedUsers, setSelectedUsers] = useState([]);
+  const [search, setSearch] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+
   const Toast = Swal.mixin({
     toast: true,
     position: "bottom-end",
@@ -16,11 +22,6 @@ const GroupModal = ({ handleShow, show }) => {
     timer: 2000,
     timerProgressBar: true,
   });
-  const { user, chats, setChats } = ChatState();
-  const [groupChatName, setGroupChatName] = useState();
-  const [selectedUsers, setSelectedUsers] = useState([]);
-  const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
 
   const handleDelete = (delUser) => {
     setSelectedUsers(selectedUsers.filter((sel) => sel._id !== delUser._id));
@@ -97,7 +98,7 @@ const GroupModal = ({ handleShow, show }) => {
   const handleClose = () => handleShow(!show);
 
   return (
-    <>
+    <React.Fragment>
       <Modal centered show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Create Group Chat</Modal.Title>
@@ -117,19 +118,27 @@ const GroupModal = ({ handleShow, show }) => {
                 onChange={(e) => handleSearch(e.target.value)}
               >
                 <Form.Label>Add Users</Form.Label>
-                <Form.Control as="textarea" rows={3} />
+                <Form.Control
+                  placeholder="E.g User1, User2"
+                  as="textarea"
+                  rows={3}
+                />
               </Form.Group>
             </Form>
           </Zoom>
-          {selectedUsers?.map((u) => (
-            <div className="user-bagde-items">
-              <UserBadgeItem
-                key={u._id}
-                user={u}
-                handleFunction={() => handleDelete(u)}
-              />
+          <>
+            <div className="group-users">
+              {selectedUsers.map((u) => (
+                <div className="group-user-box" key={u._id}>
+                  <p>{u.name}</p>
+                  <AiFillDelete
+                    onClick={() => handleDelete(u)}
+                    style={{ color: "#D22B2B", fontSize: "18px" }}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          </>
           {searchResult?.slice(0, 4).map((user) => (
             <UserListItem
               key={user._id}
@@ -145,7 +154,7 @@ const GroupModal = ({ handleShow, show }) => {
           </button>
         </Modal.Footer>
       </Modal>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -1,11 +1,11 @@
-.group-users {
+.update-group-users {
   flex-wrap: wrap;
   display: flex;
   align-items: center;
-  margin: 5px 0px;
+  margin-bottom: 5px;
 }
 
-.group-user-box {
+.update-user-box {
   margin-top: 2px;
   margin-right: 5px;
   width: 32%;
@@ -19,13 +19,13 @@
   cursor: pointer;
 }
 
-.group-user-box p {
-  margin-top: 10px !important;
+.update-user-box p {
+  margin: 0;
   font-size: 18px;
 }
 
 @media screen and (max-width: 450px) {
-  .group-user-box {
-    width: 48%;
+  .update-user-box {
+    width: 45%;
   }
 }

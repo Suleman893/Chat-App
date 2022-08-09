@@ -1,14 +1,21 @@
 import React from "react";
-import { Form, Button, Modal } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import axios from "axios";
 import { useState } from "react";
 import { ChatState } from "../../context/ChatProvider";
 import UserListItem from "../UserListItem";
-import { GrUpdate } from "react-icons/gr";
 import Swal from "sweetalert2";
 import Zoom from "react-reveal/Zoom";
+import { AiFillDelete } from "react-icons/ai";
+import "./UpdateGroupChatModal.css";
 
-const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
+const UpdateGroupChatModal = ({
+  fetchAgain,
+  setFetchAgain,
+  fetchMessages,
+  showGroupModal,
+  handleGroupModal,
+}) => {
   const Toast = Swal.mixin({
     toast: true,
     position: "bottom-end",
@@ -20,9 +27,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
   const [groupChatName, setGroupChatName] = useState();
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
-
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(!show);
+  const { selectedChat, setSelectedChat, user } = ChatState();
 
   const handleAddUser = async (user1) => {
     if (selectedChat.users.find((u) => u._id === user1._id)) {
@@ -143,65 +148,54 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
     }
   };
 
-  const { selectedChat, setSelectedChat, user } = ChatState();
   return (
-    <>
-      <GrUpdate onClick={handleShow} />
-      <Modal centered show={show} onHide={handleShow}>
+    <React.Fragment>
+      <Modal centered show={showGroupModal} onHide={handleGroupModal}>
         <Modal.Header closeButton>
-          <Modal.Title>{selectedChat.chatName}</Modal.Title>
+          <Modal.Title>Group Name: {selectedChat.chatName}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Zoom>
-            <div>
-              {selectedChat.users.map((u) => (
-                <div>
-                  <div key={user._id}>{u.name}</div>
-                  <button onClick={() => handleRemove(u)}>x</button>
-                </div>
-              ))}
-            </div>
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Update Group</Form.Label>
-                <Form.Control
-                  placeholder="Rename group"
-                  value={groupChatName}
-                  onChange={(e) => setGroupChatName(e.target.value)}
+          <div className="update-group-users">
+            {selectedChat.users.map((u) => (
+              <div className="update-user-box" key={u._id}>
+                <p>{u.name}</p>
+                <AiFillDelete
+                  onClick={() => handleRemove(u)}
+                  style={{ color: "#D22B2B", fontSize: "18px" }}
                 />
-                <Form.Label>Add User to Group</Form.Label>
-                <Form.Control
-                  placeholder="Add User to Group"
-                  onChange={(e) => handleSearch(e.target.value)}
-                />
-              </Form.Group>
-            </Form>
-
-            {searchResult?.map((user) => (
-              <UserListItem
-                key={user._id}
-                user={user}
-                handleFunction={() => handleAddUser(user)}
-              />
+              </div>
             ))}
-          </Zoom>
+          </div>
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Update Group</Form.Label>
+              <Form.Control
+                placeholder="Rename group"
+                value={groupChatName}
+                onChange={(e) => setGroupChatName(e.target.value)}
+              />
+              <Form.Label>Add User to Group</Form.Label>
+              <Form.Control
+                placeholder="Add User to Group"
+                onChange={(e) => handleSearch(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
+          {searchResult?.map((user) => (
+            <UserListItem
+              key={user._id}
+              user={user}
+              handleFunction={() => handleAddUser(user)}
+            />
+          ))}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleShow}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleRename}>
-            Rename Group
-          </Button>
-          <Button variant="primary" onClick={() => handleRemove(user)}>
-            Leave Group
-          </Button>
+          <button onClick={handleGroupModal}>Cancel</button>
+          <button onClick={handleRename}>Rename Group</button>
+          <button onClick={() => handleRemove(user)}>Leave Group</button>
         </Modal.Footer>
       </Modal>
-    </>
+    </React.Fragment>
   );
 };
 

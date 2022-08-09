@@ -1,20 +1,21 @@
-.users-list-container {
+.add-users-list-container {
   background: #c8c8c8;
   border-radius: 5px;
-  width: 90%;
-  margin: auto;
+  width: 100%;
 }
 
-.users-list {
+.add-users-list {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 90%;
   margin: auto;
   max-height: 60px;
+  cursor: pointer;
 }
 
-.users-list-content {
+.add-users-list-content {
+  max-width: 60%;
   height: 65px;
   display: flex;
   flex-wrap: wrap;
@@ -23,8 +24,15 @@
   align-items: flex-start;
 }
 
-.users-list-img img {
-  max-width: 70%;
+.add-users-list-img img {
+  width: 30%;
+  max-width: 30%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.add-users-list-img img {
+  max-width: 20%;
   height: auto;
   border-radius: 50%;
 }

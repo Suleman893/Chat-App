@@ -1,7 +1,9 @@
 .chat-box {
-  width: 40%;
-  background-color: #fff;
+  width: 38%;
+  background-color: rgb(245, 245, 245);
   border-radius: 15px;
+  min-height: 70vh;
+  max-height: 70vh;
 }
 
 .chat-box-container {

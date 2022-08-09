@@ -9,7 +9,7 @@ const ProfileModal = ({ user, show, handleProfileModal }) => {
       <Modal show={show} onHide={handleProfileModal}>
         <Modal.Header closeButton>
           <Zoom>
-            <Modal.Title>User Info</Modal.Title>
+            <Modal.Title>User Information</Modal.Title>
           </Zoom>
         </Modal.Header>
         <Modal.Body>
@@ -17,8 +17,13 @@ const ProfileModal = ({ user, show, handleProfileModal }) => {
             <div className="user-profile">
               <img src={user.pic} alt="userpic" />
               <div className="user-profile-content">
-                <h3>{user.name}</h3>
-                <h5>{user.email}</h5>
+                <h5>
+                  <b>Name:</b> {user.name}
+                </h5>
+                <h5>
+                  <b>Email: </b>
+                  {user.email}
+                </h5>
               </div>
             </div>
           </Zoom>

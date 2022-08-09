@@ -15,8 +15,8 @@
 
 .chat-bg {
   margin: 10px auto;
-  min-height: 56vh;
-  max-height: 56vh;
+  min-height: 53vh;
+  max-height: 53vh;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -50,9 +50,8 @@
   cursor: pointer;
   caret-color: #00b712;
   min-width: 100%;
-  margin-bottom: 20px;
-  height: 40px;
-  padding: 3px 10px;
+  height: 30px;
+  padding: 15px 0px;
   border: none;
   border-bottom: 1px solid #000;
   background: transparent;

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import UserListItem from "../UserListItem";
 import "./SideDrawer.css";
+
 import { RiUserSearchFill } from "react-icons/ri";
+import Zoom from "react-reveal/Zoom";
 
 import Bounce from "react-reveal/Bounce";
 import AppSpinner from "../Layout/AppSpinner";
@@ -96,13 +97,27 @@ const SideDrawer = () => {
             <AppSpinner />
           ) : (
             <React.Fragment>
+            <div className="side-drawer-all-users">
               {searchResult.map((user) => (
-                <UserListItem
-                  key={user._id}
-                  user={user}
-                  handleFunction={() => accessChat(user._id)}
-                />
+                <Zoom>
+                  <div className="sidedrawer-users-list-container">
+                    <div
+                      className="sidedrawer-users-list"
+                      onClick={() => accessChat(user._id)}
+                    >
+                      <div className="sidedrawer-users-list-img">
+                        <img src={user.pic} />
+                      </div>
+                      <div className="sidedrawer-users-list-content">
+                        <div>{user.name}</div>
+                        <div>{user.email}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                </Zoom>
               ))}
+              </div>
             </React.Fragment>
           )}
         </div>

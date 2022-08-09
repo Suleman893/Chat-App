@@ -36,7 +36,7 @@
   margin-bottom: 20px;
   height: 40px;
   padding: 3px 10px;
-  caret-color: #ff0000;
+  caret-color: #d22b2b;
 }
 
 .signup-box input::placeholder {
@@ -74,6 +74,7 @@ input[type="text"] {
 .add-image input[type="file"] {
   position: absolute;
   opacity: 0;
+  cursor: pointer;
 }
 
 .signup-box button {

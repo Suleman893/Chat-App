@@ -1,7 +1,9 @@
 .my-chats {
-  width: 35%;
+  width: 38%;
   border-radius: 15px;
   background-color: rgb(245, 245, 245);
+  min-height: 70vh;
+  max-height: 70vh;
 }
 
 .my-chats-container {
@@ -25,8 +27,9 @@
 }
 
 .chat-boxes-container {
-  height: 65vh;
-  overflow-y: scroll;
+  max-height: 60vh;
+  height: 60vh;
+  overflow-y: auto;
   padding-right: 5px;
 }
 
@@ -45,7 +48,7 @@
 
 .chat-boxes-container::-webkit-scrollbar-thumb {
   cursor: pointer;
-  background: darkgray;
+  background: #a9a9a9;
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
@@ -58,6 +61,7 @@
   max-height: 60px;
   padding: 10px 10px;
   cursor: pointer;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 800px) {

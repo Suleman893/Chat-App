@@ -34,7 +34,7 @@ const ScrollableChat = ({ messages }) => {
         ))
       ) : (
         <div className="no-message">
-          <p>No Conversation, send message to chat</p>
+          <p>No Conversation, send message to start</p>
         </div>
       )}
     </ScrollableFeed>

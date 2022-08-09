@@ -56,7 +56,7 @@ const MyChats = ({ fetchAgain }) => {
               <AiOutlineUsergroupAdd
                 style={{
                   fontSize: "28px",
-                  color: "#00b712;",
+                  color: "#00b712",
                   cursor: "pointer",
                 }}
                 onClick={handleShow}
@@ -73,7 +73,7 @@ const MyChats = ({ fetchAgain }) => {
                     style={{
                       backgroundColor: selectedChat == chat && "#04b0ff",
                       boxShadow:
-                        selectedChat == chat && "0px 0px 4px 0px #04b0ff",
+                        selectedChat == chat && "0px 0px 1px 0px #04b0ff",
                     }}
                   >
                     <p>

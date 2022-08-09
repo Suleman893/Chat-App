@@ -3,7 +3,8 @@ import { ChatState } from "../../context/ChatProvider";
 import { getSenderFull, getSender } from "./Chat";
 import UpdateGroupChatModal from "../Modals/UpdateGroupChatModal";
 import { BiArrowBack } from "react-icons/bi";
-import { CgUserlane } from "react-icons/cg";
+import { MdGroup } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
 import ProfileModal from "../Modals/ProfileModal";
 import "./SingleChat.css";
 import axios from "axios";
@@ -23,6 +24,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [newMessage, setNewMessage] = useState("");
   const [show, setShow] = useState(false);
   const handleProfileModal = () => setShow(!show);
+  const [showGroupModal, setShowGroupModal] = useState(false);
+  const handleGroupModal = () => setShowGroupModal(!showGroupModal);
   const [socketConnected, setSocketConnected] = useState(false);
   const { selectedChat, setSelectedChat, user, notification, setNotification } =
     ChatState();
@@ -128,15 +131,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           <div className="single-chat-info-section">
             <BiArrowBack
               onClick={() => setSelectedChat("")}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", fontSize: "18px" }}
             />
             {!selectedChat.isGroupChat ? (
-              <div>
+              <p
+                style={{ fontSize: "18px", cursor: "pointer" }}
+                onClick={handleProfileModal}
+              >
                 {getSender(user, selectedChat.users)}
-                <CgUserlane
-                  onClick={handleProfileModal}
-                  style={{ cursor: "pointer" }}
-                />
                 {show && (
                   <ProfileModal
                     user={getSenderFull(user, selectedChat.users)}
@@ -144,16 +146,23 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     handleProfileModal={handleProfileModal}
                   />
                 )}
-              </div>
+              </p>
             ) : (
-              <div>
-                {selectedChat.chatName.toUpperCase()}
+              <>
+                <p
+                  style={{ fontSize: "18px", cursor: "pointer" }}
+                  onClick={handleGroupModal}
+                >
+                  {selectedChat.chatName}
+                </p>
                 <UpdateGroupChatModal
                   fetchAgain={fetchAgain}
                   setFetchAgain={setFetchAgain}
                   fetchMessages={fetchMessages}
+                  showGroupModal={showGroupModal}
+                  handleGroupModal={handleGroupModal}
                 />
-              </div>
+              </>
             )}
           </div>
           {loading ? (

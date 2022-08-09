@@ -18,14 +18,16 @@
 }
 
 .header-menu ul {
-  margin-bottom: 0rem;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0rem;
   list-style: none;
   cursor: pointer;
 }
 
 .header-menu li {
-  padding-right: 10px;
+  padding-right: 15px;
 }
 
 .header-img {
@@ -41,4 +43,3 @@
   font-size: 25px;
   color: #ba2b2b;
 }
-

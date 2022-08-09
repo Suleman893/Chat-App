@@ -25,57 +25,15 @@ const Header = () => {
       <div className="header-container">
         <div className="header-logo">
           <h2>Chat App</h2>
-      
         </div>
         <div className="header-menu">
           <ul>
-            {/*<li className="icons-font-size">{user.name}</li>
-             */}
-            <li onClick={handleProfileModal}>
-              <div className="header-img">
-                <img src={user.pic} />
-                {show && (
-                  <ProfileModal user={user} show={show} handleProfileModal />
-                )}
-              </div>
-            </li>
-            {/*
-            <li>
-                <NotificationBadge
-                  count={notification.length}
-                  effect={Effect.SCALE}
-                />
-              <TbBellRinging
-                onClick={handleNotification}
-                style={{ color: "yellow" }}
-                className="icons-font-size"
-              />
-              {showNotification && (
-                <NavDropdown>
-                  {!notification.length && "No New Message"}
-                  {notification.map((n) => (
-                    <NavDropdown.Item
-                      href="#action/3.3"
-                      key={n._id}
-                      onClick={() => {
-                        setSelectedChat(n.chat);
-                        setNotification(
-                          notification.filter((noti) => noti !== n)
-                        );
-                      }}
-                    >
-                      {n.chat.isGroupChat
-                        ? `New Message in ${n.chat.chatName}`
-                        : `
-                        New Message from ${getSender(user, n.chat.users)}
-                        `}
-                    </NavDropdown.Item>
-                  ))}
-                  <NavDropdown.Divider />
-                </NavDropdown>
+            <li onClick={handleProfileModal} className="header-img">
+              <img src={user.pic} />
+              {show && (
+                <ProfileModal user={user} show={show} handleProfileModal />
               )}
             </li>
-            */}
             <li onClick={logoutHandler}>
               <GoSignOut className="logout-icon" />
             </li>
